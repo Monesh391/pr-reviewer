@@ -1,0 +1,135 @@
+{
+  "summary": {
+    "cases": 10,
+    "bugs_total": 7,
+    "bugs_found": 7,
+    "recall": 1.0,
+    "findings_total": 7,
+    "precision": 1.0,
+    "clean_cases_flagged": "0/3",
+    "false_alarm_rate_on_clean": 0.0,
+    "avg_cost_usd": 0.00376,
+    "avg_latency_s": 13.31
+  },
+  "cases": [
+    {
+      "id": "sql-injection",
+      "bug_lines": [
+        6
+      ],
+      "findings": [
+        {
+          "line": 6,
+          "message": "[S608] Possible SQL injection vector through string-based query construction"
+        }
+      ],
+      "cost_usd": 0.003117,
+      "latency_s": 17.282697399990866
+    },
+    {
+      "id": "off-by-one",
+      "bug_lines": [
+        3
+      ],
+      "findings": [
+        {
+          "line": 3,
+          "message": "The range goes up to len(items) + 1, which will cause an IndexError on the final iteration when accessing items[i]."
+        }
+      ],
+      "cost_usd": 0.0044340000000000004,
+      "latency_s": 20.991866900003515
+    },
+    {
+      "id": "mutable-default",
+      "bug_lines": [
+        1
+      ],
+      "findings": [
+        {
+          "line": 1,
+          "message": "[B006] Do not use mutable data structures for argument defaults"
+        }
+      ],
+      "cost_usd": 0.004038,
+      "latency_s": 2.0458578999969177
+    },
+    {
+      "id": "hardcoded-secret",
+      "bug_lines": [
+        3
+      ],
+      "findings": [
+        {
+          "line": 3,
+          "message": "Hardcoded API key detected in the source code, which exposes sensitive credentials."
+        }
+      ],
+      "cost_usd": 0.0042959999999999995,
+      "latency_s": 13.92576059998828
+    },
+    {
+      "id": "swallowed-exception",
+      "bug_lines": [
+        8
+      ],
+      "findings": [
+        {
+          "line": 8,
+          "message": "[S110] `try`-`except`-`pass` detected, consider logging the exception"
+        }
+      ],
+      "cost_usd": 0.004353,
+      "latency_s": 4.607258600008208
+    },
+    {
+      "id": "divide-by-zero",
+      "bug_lines": [
+        3
+      ],
+      "findings": [
+        {
+          "line": 3,
+          "message": "Division by zero occurs in average() when the input list 'values' is empty, because len(values) is 0."
+        }
+      ],
+      "cost_usd": 0.004488000000000001,
+      "latency_s": 17.613843500002986
+    },
+    {
+      "id": "path-traversal",
+      "bug_lines": [
+        7
+      ],
+      "findings": [
+        {
+          "line": 7,
+          "message": "Using os.path.join with an untrusted filename allows path traversal via sequences like '../', enabling arbitrary file reads outside of UPLOAD_DIR."
+        }
+      ],
+      "cost_usd": 0.004536,
+      "latency_s": 14.64182059999439
+    },
+    {
+      "id": "clean-clamp",
+      "bug_lines": [],
+      "findings": [],
+      "cost_usd": 0.0026520000000000003,
+      "latency_s": 14.540791400009766
+    },
+    {
+      "id": "clean-safe-query",
+      "bug_lines": [],
+      "findings": [],
+      "cost_usd": 0.0027300000000000002,
+      "latency_s": 14.299421400006395
+    },
+    {
+      "id": "clean-dataclass",
+      "bug_lines": [],
+      "findings": [],
+      "cost_usd": 0.002973,
+      "latency_s": 13.141319600021234
+    }
+  ]
+}

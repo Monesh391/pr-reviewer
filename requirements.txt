@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+httpx
+PyJWT[crypto]
+python-dotenv
+ruff
