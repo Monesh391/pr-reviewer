@@ -43,6 +43,7 @@ async def fetch_conventions(token: str, repo: str, ref: str) -> str:
     return ""
 
 
+
 def log_review(repo: str, number: int, result) -> None:
     """Append one line of stats per review (used for your resume numbers)."""
     row = {
@@ -81,6 +82,7 @@ async def handle_pull_request(payload: dict) -> None:
 
     token = await get_installation_token(payload["installation"]["id"])
     files = await get_pr_files(token, repo, number)
+    log.info("Fetched %d changed files", len(files))
     conventions = await fetch_conventions(token, repo, sha)
 
     contents = {}

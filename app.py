@@ -28,10 +28,11 @@ def verify_signature(body: bytes, signature: str | None) -> bool:
 
 async def _safe_handle(payload: dict) -> None:
     try:
+        log.info("Starting PR review task")
         await handle_pull_request(payload)
-    except Exception:  # never crash the server because one review failed
+        log.info("PR review task completed successfully")
+    except Exception:
         log.exception("Review failed")
-
 
 @app.get("/")
 def health():
