@@ -29,6 +29,8 @@ def verify_signature(body: bytes, signature: str | None) -> bool:
 async def _safe_handle(payload: dict) -> None:
     try:
         log.info("Starting PR review task")
+        log.info("Webhook payload keys: %s", list(payload.keys()))
+        log.info("Webhook payload: %s", payload)
         await handle_pull_request(payload)
         log.info("PR review task completed successfully")
     except Exception:
