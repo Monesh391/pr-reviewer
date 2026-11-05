@@ -25,16 +25,21 @@ def verify_signature(body: bytes, signature: str | None) -> bool:
     expected = "sha256=" + hmac.new(WEBHOOK_SECRET.encode(), body, hashlib.sha256).hexdigest()
     return hmac.compare_digest(expected, signature)
 
-
 async def _safe_handle(payload: dict) -> None:
     try:
         log.info("Starting PR review task")
-        log.info("Webhook payload keys: %s", list(payload.keys()))
-        log.info("Webhook payload: %s", payload)
+
+        if "installation" not in payload:
+            log.error("Webhook payload missing installation information")
+            return
+
         await handle_pull_request(payload)
+
         log.info("PR review task completed successfully")
+
     except Exception:
         log.exception("Review failed")
+
 
 @app.get("/")
 def health():
