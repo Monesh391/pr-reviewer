@@ -29,6 +29,10 @@ async def _safe_handle(payload: dict) -> None:
     try:
         log.info("Starting PR review task")
 
+        # Diagnostic logs
+        log.info("Webhook payload keys: %s", list(payload.keys()))
+        log.info("Installation data: %s", payload.get("installation"))
+
         if "installation" not in payload:
             log.error("Webhook payload missing installation information")
             return
